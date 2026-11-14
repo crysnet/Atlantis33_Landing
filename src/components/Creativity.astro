@@ -1,0 +1,96 @@
+---
+import { creativity } from '../data/content';
+import Icon from './Icon.astro';
+---
+
+<section class="section" id="creativity">
+  <div class="container layout">
+    <div class="sticky">
+      <span class="eyebrow reveal">05 — Creativity</span>
+      <h2 class="section-title reveal">Mission planning that feels like <span class="gradient-text">exploring.</span></h2>
+      <p class="section-lead reveal">
+        We combined space science with game design and storytelling, so planning a traverse on Mars is as intuitive as it is rigorous.
+      </p>
+    </div>
+
+    <div class="list">
+      {
+        creativity.map((c, i) => (
+          <article class="card reveal" style={`--delay: ${i * 80}ms`}>
+            <div class="icon-badge">
+              <Icon name={c.icon} />
+            </div>
+            <div>
+              <h3>{c.title}</h3>
+              <p>{c.text}</p>
+            </div>
+            <span class="num" aria-hidden="true">
+              0{i + 1}
+            </span>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .sticky {
+    position: sticky;
+    top: 120px;
+  }
+
+  .list {
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  article {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+
+  .icon-badge {
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    margin-top: 0.5rem;
+    color: var(--muted);
+  }
+
+  .num {
+    position: absolute;
+    right: 1.25rem;
+    bottom: -1.25rem;
+    font-family: var(--font-display);
+    font-size: 5.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: rgba(255, 138, 91, 0.06);
+    pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    .sticky {
+      position: static;
+    }
+  }
+</style>

@@ -1,0 +1,96 @@
+---
+import { tools } from '../data/content';
+---
+
+<section class="section" id="tools">
+  <div class="container">
+    <span class="eyebrow reveal">04 — Tools we used</span>
+    <h2 class="section-title reveal">Built on <span class="gradient-text">NASA open data</span> and modern tech.</h2>
+    <p class="section-lead reveal">
+      Public datasets from Mars orbiters power the terrain model, while an open-source stack handles AI, pathfinding and visualization.
+    </p>
+
+    <div class="grid">
+      {
+        tools.map((t, i) => (
+          <article class="card reveal" style={`--delay: ${i * 100}ms`}>
+            <header>
+              <span class="idx">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{t.group}</h3>
+            </header>
+            <ul>
+              {t.items.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 3.5rem;
+  }
+
+  header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .idx {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--mars-light);
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 1.2rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  li {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.03);
+    transition:
+      border-color 0.2s,
+      color 0.2s;
+  }
+
+  li:hover {
+    border-color: var(--hud);
+    color: var(--hud);
+  }
+
+  @media (max-width: 1000px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

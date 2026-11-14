@@ -1,0 +1,57 @@
+---
+import { benefits } from '../data/content';
+import Icon from './Icon.astro';
+---
+
+<section class="section" id="benefits">
+  <div class="container">
+    <span class="eyebrow reveal">02 — Benefits</span>
+    <h2 class="section-title reveal">Why crews and mission control <span class="gradient-text">need it.</span></h2>
+
+    <div class="grid">
+      {
+        benefits.map((b, i) => (
+          <article class="card reveal" style={`--delay: ${(i % 3) * 100}ms`}>
+            <div class="icon-badge">
+              <Icon name={b.icon} />
+            </div>
+            <h3>{b.title}</h3>
+            <p>{b.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 3.5rem;
+  }
+
+  h3 {
+    margin-top: 1.4rem;
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin-top: 0.6rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 900px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

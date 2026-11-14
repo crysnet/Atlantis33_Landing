@@ -1,0 +1,108 @@
+<svg class="mars" viewBox="0 0 400 400" role="img" aria-label="Illustration of Mars with a planned route and bases">
+  <defs>
+    <radialGradient id="marsAtmo" cx="50%" cy="50%" r="50%">
+      <stop offset="0.82" stop-color="#ff7a4d" stop-opacity="0.35"></stop>
+      <stop offset="1" stop-color="#ff7a4d" stop-opacity="0"></stop>
+    </radialGradient>
+    <radialGradient id="marsBase" cx="38%" cy="34%" r="72%">
+      <stop offset="0" stop-color="#ffb37a"></stop>
+      <stop offset="0.35" stop-color="#e2583e"></stop>
+      <stop offset="0.7" stop-color="#9c2f1c"></stop>
+      <stop offset="1" stop-color="#3d0f08"></stop>
+    </radialGradient>
+    <radialGradient id="marsShade" cx="32%" cy="30%" r="85%">
+      <stop offset="0.45" stop-color="#000" stop-opacity="0"></stop>
+      <stop offset="1" stop-color="#000" stop-opacity="0.8"></stop>
+    </radialGradient>
+    <radialGradient id="crater" cx="40%" cy="40%" r="60%">
+      <stop offset="0" stop-color="#3a0e07" stop-opacity="0.55"></stop>
+      <stop offset="0.8" stop-color="#3a0e07" stop-opacity="0.2"></stop>
+      <stop offset="1" stop-color="#ffb37a" stop-opacity="0.25"></stop>
+    </radialGradient>
+    <filter id="marsNoise" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.016" numOctaves="5" seed="7"></feTurbulence>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.24  0 0 0 0 0.06  0 0 0 0 0.03  2.4 0 0 0 -1"></feColorMatrix>
+    </filter>
+    <filter id="softBlur"><feGaussianBlur stdDeviation="4"></feGaussianBlur></filter>
+    <clipPath id="marsClip"><circle cx="200" cy="200" r="160"></circle></clipPath>
+  </defs>
+
+  <circle cx="200" cy="200" r="196" fill="url(#marsAtmo)"></circle>
+
+  <g clip-path="url(#marsClip)">
+    <circle cx="200" cy="200" r="160" fill="url(#marsBase)"></circle>
+    <rect x="40" y="40" width="320" height="320" filter="url(#marsNoise)"></rect>
+    <ellipse cx="190" cy="48" rx="70" ry="16" fill="#fff4ec" opacity="0.75" filter="url(#softBlur)"></ellipse>
+    <path d="M90 215 C 140 200, 190 222, 240 205 S 300 200, 330 190" stroke="#3a0e07" stroke-width="7" fill="none" opacity="0.45" filter="url(#softBlur)"></path>
+    <circle cx="150" cy="150" r="18" fill="url(#crater)"></circle>
+    <circle cx="255" cy="270" r="26" fill="url(#crater)"></circle>
+    <circle cx="300" cy="140" r="12" fill="url(#crater)"></circle>
+    <circle cx="120" cy="280" r="14" fill="url(#crater)"></circle>
+
+    <!-- Planned route on the surface -->
+    <path class="route" d="M120 250 C 150 230, 170 260, 205 240 S 250 180, 285 175" fill="none" stroke="#ffe3c8" stroke-width="2" stroke-linecap="round"></path>
+    <g class="bases">
+      <circle cx="120" cy="250" r="4" fill="#ffe3c8"></circle>
+      <circle class="ping" cx="205" cy="240" r="5" fill="#ffb86b"></circle>
+      <circle class="ping" cx="285" cy="175" r="5" fill="#4cc9f0"></circle>
+    </g>
+
+    <circle cx="200" cy="200" r="160" fill="url(#marsShade)"></circle>
+  </g>
+
+  <!-- Orbit + satellite -->
+  <ellipse id="orbitPath" cx="200" cy="200" rx="190" ry="58" fill="none" stroke="#4cc9f0" stroke-opacity="0.35" stroke-dasharray="3 6" transform="rotate(-18 200 200)"></ellipse>
+  <g transform="rotate(-18 200 200)">
+    <circle r="4" fill="#4cc9f0">
+      <animateMotion dur="14s" repeatCount="indefinite" path="M390 200 A190 58 0 1 1 10 200 A190 58 0 1 1 390 200"></animateMotion>
+    </circle>
+  </g>
+</svg>
+
+<style>
+  .mars {
+    width: 100%;
+    height: 100%;
+    animation: float 9s ease-in-out infinite;
+    filter: drop-shadow(0 30px 80px rgba(226, 88, 62, 0.35));
+  }
+
+  .route {
+    stroke-dasharray: 4 6;
+    animation: dash 3s linear infinite;
+  }
+
+  .ping {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: ping 2.4s ease-out infinite;
+  }
+
+  .ping:nth-child(3) {
+    animation-delay: 1.2s;
+  }
+
+  @keyframes float {
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -40;
+    }
+  }
+
+  @keyframes ping {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.6);
+      opacity: 0.6;
+    }
+  }
+</style>

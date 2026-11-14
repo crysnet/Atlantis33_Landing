@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Benefits from '../components/Benefits.astro';
+import Impact from '../components/Impact.astro';
+import Tools from '../components/Tools.astro';
+import Creativity from '../components/Creativity.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/content';
+---
+
+<Layout title={`${site.product} · ${site.team}`} description={site.description}>
+  <Navbar />
+  <main>
+    <Hero />
+    <HowItWorks />
+    <Benefits />
+    <Impact />
+    <Tools />
+    <Creativity />
+  </main>
+  <Footer />
+</Layout>

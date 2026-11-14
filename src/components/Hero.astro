@@ -1,0 +1,256 @@
+---
+import { heroStats, site } from '../data/content';
+import Icon from './Icon.astro';
+import Mars from './Mars.astro';
+---
+
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="status reveal">
+        <span class="dot"></span>
+        {site.event} · Team {site.team}
+      </p>
+      <h1 class="reveal" style="--delay: 100ms">
+        Plan every step on <span class="gradient-text">the Red Planet.</span>
+      </h1>
+      <p class="lead reveal" style="--delay: 200ms">{site.description}</p>
+      <div class="actions reveal" style="--delay: 300ms">
+        <a href="#how" class="btn btn-primary">
+          See how it works
+          <Icon name="arrow" size={18} />
+        </a>
+        <a href="#mission-map" class="btn btn-ghost">Try the route planner</a>
+      </div>
+
+      <dl class="stats reveal" style="--delay: 400ms">
+        {
+          heroStats.map((s) => (
+            <div>
+              <dt>{s.label}</dt>
+              <dd>{s.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+
+    <div class="hero-visual reveal" style="--delay: 200ms">
+      <Mars />
+      <div class="hud hud-top">
+        <span>TARGET</span>
+        <strong>JEZERO CRATER</strong>
+        <small>18.38°N · 77.58°E</small>
+      </div>
+      <div class="hud hud-bottom">
+        <span>SOL 042 · ROUTE STATUS</span>
+        <strong class="ok">● NOMINAL</strong>
+      </div>
+    </div>
+  </div>
+
+  <a href="#how" class="scroll-hint" aria-label="Scroll to content">
+    <span></span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 110px 0 80px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--hud);
+    box-shadow: 0 0 0 0 rgba(76, 201, 240, 0.7);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    70% {
+      box-shadow: 0 0 0 10px rgba(76, 201, 240, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(76, 201, 240, 0);
+    }
+  }
+
+  h1 {
+    margin-top: 1.5rem;
+    font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+    font-weight: 700;
+  }
+
+  .lead {
+    margin-top: 1.5rem;
+    font-size: 1.15rem;
+    color: var(--muted);
+    max-width: 52ch;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.25rem;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: 2.5rem;
+    margin: 3rem 0 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stats div {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .stats dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  .stats dt {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 560px;
+    width: 100%;
+    justify-self: center;
+  }
+
+  .hud {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(76, 201, 240, 0.3);
+    border-radius: 12px;
+    background: rgba(7, 6, 11, 0.65);
+    backdrop-filter: blur(8px);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  .hud span,
+  .hud small {
+    color: var(--muted);
+  }
+
+  .hud strong {
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .hud .ok {
+    color: var(--hud);
+  }
+
+  .hud-top {
+    top: 8%;
+    left: -2%;
+  }
+
+  .hud-bottom {
+    bottom: 10%;
+    right: 0;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 28px;
+    width: 26px;
+    height: 42px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    transform: translateX(-50%);
+  }
+
+  .scroll-hint span {
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 4px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--mars-light);
+    transform: translateX(-50%);
+    animation: scroll 1.8s infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, 0);
+    }
+    40% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, 14px);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-visual {
+      max-width: 420px;
+      order: -1;
+    }
+    .stats {
+      gap: 1.5rem;
+    }
+    .stats dd {
+      font-size: 1.5rem;
+    }
+    .scroll-hint {
+      display: none;
+    }
+  }
+</style>
