@@ -6,7 +6,7 @@ export const site = {
   event: 'NASA Space Apps Challenge',
   tagline: 'Mission routes for the first humans on Mars.',
   description:
-    'ARES Pathfinder plans safe traverses for astronauts in Sinus Meridiani and guides the search for ancient biosignatures through phyllosilicates, carbonates, and hydrous mineral detections.',
+    'SINUS MERIDIANI Pathfinder plans safe traverses for astronauts in Sinus Meridiani and guides the search for ancient biosignatures through phyllosilicates, carbonates, and hydrous mineral detections.',
 };
 
 export const nav = [
@@ -101,19 +101,19 @@ export const impact = {
 export const tools = [
   {
     group: 'NASA data',
-    items: ['MRO HiRISE imagery', 'MOLA elevation (MGS)', 'CRISM mineral maps', 'Mars Trek API'],
+    items: ['Mars Trek API'],
   },
   {
     group: 'AI & algorithms',
-    items: ['Python', 'Flutter', 'A* / Dart'],
+    items: ['Python', 'Antigravity', 'Claude'],
   },
   {
     group: 'Visualization',
-    items: ['Astro', 'Three.js', 'CesiumJS', 'D3.js'],
+    items: ['Stitch', 'Flutter', 'Dart'],
   },
   {
     group: 'Infrastructure',
-    items: ['Docker', 'FastAPI', 'PostGIS', 'GitHub Actions'],
+    items: ['Vercel'],
   },
 ];
 

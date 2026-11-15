@@ -8,11 +8,11 @@ const initial = routes[0];
 <div class="mission card reveal" id="mission-map">
   <div class="map-wrap">
     <div class="map-hud">
-      <span>ARES · TRAVERSE PLANNER</span>
+      <span>SINUS MERIDIANI · TRAVERSE PLANNER</span>
       <span>SECTOR JZ-07 · 10 m/px</span>
     </div>
 
-    <svg class="map" viewBox="0 0 800 500" role="img" aria-label="Interactive map of planned routes between Mars bases">
+    <svg class="map" viewBox="0 -30 800 530" role="img" aria-label="Interactive map of planned routes between Mars bases">
       <defs>
         <linearGradient id="terrain" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stop-color="#5a2216"></stop>
@@ -37,20 +37,20 @@ const initial = routes[0];
         </filter>
       </defs>
 
-      <rect width="800" height="500" fill="url(#terrain)"></rect>
-      <rect width="800" height="500" filter="url(#terrainNoise)" opacity="0.35"></rect>
+      <rect y="-30" width="800" height="530" fill="url(#terrain)"></rect>
+      <rect y="-30" width="800" height="530" filter="url(#terrainNoise)" opacity="0.35"></rect>
 
       <!-- Contour lines -->
       <g fill="none" stroke="#ffcfa8" stroke-opacity="0.12">
         <path d="M0 90 C 120 60, 220 130, 360 95 S 600 40, 800 80"></path>
         <path d="M0 140 C 140 110, 240 180, 380 150 S 620 90, 800 130"></path>
         <path d="M0 470 C 150 440, 300 490, 450 455 S 700 430, 800 460"></path>
-        <path d="M120 0 C 160 80, 120 160, 190 230 S 160 380, 230 500"></path>
+        <path d="M110 -30 C 160 80, 120 160, 190 230 S 160 380, 230 500"></path>
         <ellipse cx="540" cy="200" rx="120" ry="60"></ellipse>
         <ellipse cx="540" cy="200" rx="80" ry="36"></ellipse>
       </g>
 
-      <rect width="800" height="500" fill="url(#grid)"></rect>
+      <rect y="-30" width="800" height="530" fill="url(#grid)"></rect>
 
       <!-- Hazards -->
       <g class="hazards">
@@ -99,7 +99,7 @@ const initial = routes[0];
       }
 
       <!-- Compass -->
-      <g transform="translate(752 52)" class="compass">
+      <g transform="translate(752 60)" class="compass">
         <circle r="22" fill="rgba(7,6,11,.5)" stroke="#fff" stroke-opacity="0.2"></circle>
         <path d="M0 -15 L5 0 L0 -3 L-5 0Z" fill="#ff8a5b"></path>
         <text y="-28" text-anchor="middle" class="label">N</text>
@@ -166,6 +166,8 @@ const initial = routes[0];
     inset: 0 0 auto 0;
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
     padding: 0.8rem 1rem;
     font-family: var(--font-mono);
     font-size: 0.68rem;
@@ -173,6 +175,12 @@ const initial = routes[0];
     color: rgba(255, 255, 255, 0.65);
     background: linear-gradient(180deg, rgba(7, 6, 11, 0.6), transparent);
     pointer-events: none;
+  }
+
+  .map-hud span:last-child {
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .label {
@@ -339,6 +347,15 @@ const initial = routes[0];
     .map-wrap {
       border-right: 0;
       border-bottom: 1px solid var(--border);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .map-hud {
+      padding: 0.5rem 0.7rem;
+      font-size: 0.52rem;
+      letter-spacing: 0.06em;
+      gap: 0.5rem;
     }
   }
 </style>
