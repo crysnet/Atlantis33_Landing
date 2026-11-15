@@ -1,12 +1,12 @@
 // Contenido de la landing. Todo es FAKE / placeholder: reemplázalo con la información real del proyecto.
 
 export const site = {
-  product: 'ARES Pathfinder',
+  product: 'ATLANTIS Pathfinder',
   team: 'Atlantis 33',
   event: 'NASA Space Apps Challenge',
   tagline: 'Mission routes for the first humans on Mars.',
   description:
-    'ARES Pathfinder plans safe traverses for astronauts on the Red Planet and recommends where to plant bases to search for water ice, minerals and new discoveries.',
+    'ARES Pathfinder plans safe traverses for astronauts in Sinus Meridiani and guides the search for ancient biosignatures through phyllosilicates, carbonates, and hydrous mineral detections.',
 };
 
 export const nav = [
@@ -17,73 +17,62 @@ export const nav = [
   { label: 'Creativity', href: '#creativity' },
 ];
 
-export const heroStats = [
-  { value: '12.4M', label: 'km² of terrain mapped' },
-  { value: '3', label: 'route strategies' },
-  { value: '< 2 s', label: 'to re-plan a traverse' },
-];
-
 export const howItWorks = {
   intro:
-    'ARES Pathfinder fuses orbital data from NASA missions into a living digital twin of Mars. Astronauts and mission control pick a goal, and the system generates the safest, fastest or most scientific route, while suggesting where to establish bases along the way.',
+    'Pathfinder data from mars trek into a living digital twin of Mars. Astronauts and mission control pick a goal, and the system generates the safest, fastest or most scientific route. The app calculates the best route by following these safety and transit filters: ',
   steps: [
     {
       icon: 'satellite',
       title: 'Ingest orbital data',
-      text: 'HiRISE imagery, MOLA elevation and CRISM mineral maps are merged into a 3D terrain model at 10 m resolution.',
+      text: 'Anchored at a pre-established habitable zone within Sinus Meridiani, serving as the central base camp and starting point for all traverses.',
     },
     {
       icon: 'cpu',
       title: 'Score every cell',
-      text: 'An AI model classifies slopes, boulders, dust hazards and the probability of finding water ice or minerals.',
+      text: 'Our mission is the search for biosignatures, focusing on highprobability targets containing phyllosilicates, carbonates, Hydrous Mineral Detections, and Valley Networks',
     },
     {
       icon: 'route',
       title: 'Plan the route',
-      text: 'Multi-objective pathfinding balances safety, energy, time and science value to draw the optimal traverse.',
+      text: 'Evaluates the Global Dust Cover Index and Thermal Inercia to filter out dust traps. High index values and thermal inertia guarantee a stable transit zone where astronauts and vehicles wont get stuck',
     },
     {
       icon: 'flag',
       title: 'Plant bases & explore',
-      text: 'It recommends base locations and supply caches, then re-plans live using rover and suit telemetry.',
+      text: 'Computes terrain slopes every 10 meters, enforcing a strict safety threshold of under 15% to draw the optimal traverse.',
     },
   ],
 };
 
 export const missionMap = {
+  // Una ruta por base: todas parten del Habitat (90, 400)
   routes: [
     {
-      id: 'safe',
-      label: 'Safest',
-      path: 'M90 400 C 160 380, 220 350, 300 335 S 420 345, 460 330 S 560 250, 620 120',
-      distance: '14.2 km',
-      duration: '6 h 40 min',
-      risk: 'Low',
-      sites: '3 sampling sites',
+      id: 'alpha',
+      label: 'To target 1',
+      path: 'M90 400 C 95 300, 120 200, 200 160 S 300 138, 370 150 S 530 185, 620 120',
+      distance: '16.8 km',
+      duration: '7 h 20 min',
     },
     {
-      id: 'fast',
-      label: 'Fastest',
-      path: 'M90 400 L 250 300 L 420 220 L 620 120',
-      distance: '9.8 km',
-      duration: '4 h 10 min',
-      risk: 'Medium',
-      sites: '1 sampling site',
+      id: 'beta',
+      label: 'To target 2',
+      path: 'M90 400 C 200 400, 330 372, 460 330',
+      distance: '6.1 km',
+      duration: '2 h 30 min',
     },
     {
-      id: 'science',
-      label: 'Max science',
-      path: 'M90 400 C 180 440, 320 420, 460 330 S 690 440, 705 375 S 720 220, 620 120',
-      distance: '18.6 km',
-      duration: '9 h 05 min',
-      risk: 'Low–Medium',
-      sites: '6 sampling sites',
+      id: 'gamma',
+      label: 'To target 3',
+      path: 'M90 400 C 200 330, 330 240, 450 228 S 640 255, 705 375',
+      distance: '15.4 km',
+      duration: '6 h 50 min',
     },
   ],
   bases: [
-    { name: 'Base Alpha', find: 'Water ice', x: 620, y: 120, color: '#4cc9f0' },
-    { name: 'Base Beta', find: 'Hematite & clays', x: 460, y: 330, color: '#ffb86b' },
-    { name: 'Base Gamma', find: 'Lava tube', x: 705, y: 375, color: '#c77dff' },
+    { name: 'Base Alpha', find: 'Hydrous minerals', x: 620, y: 120, color: '#4cc9f0' },
+    { name: 'Base Beta', find: 'Phyllosilicates', x: 460, y: 330, color: '#ffb86b' },
+    { name: 'Base Gamma', find: 'Carbonates', x: 705, y: 375, color: '#c77dff' },
   ],
 };
 
@@ -91,60 +80,21 @@ export const benefits = [
   {
     icon: 'shield',
     title: 'Safer EVAs',
-    text: 'Avoids steep slopes, boulder fields and dust storms before astronauts ever leave the habitat.',
-  },
-  {
-    icon: 'zap',
-    title: 'Less energy, more range',
-    text: 'Optimized traverses reduce rover battery use and oxygen consumption on every excursion.',
-  },
-  {
-    icon: 'flask',
-    title: 'More science per sol',
-    text: 'Routes are ranked by scientific value, so every hour on the surface counts.',
-  },
-  {
-    icon: 'radio',
-    title: 'Works with a 20-min delay',
-    text: 'Plans run on board, so crews stay autonomous despite the Earth–Mars communication lag.',
-  },
-  {
-    icon: 'play',
-    title: 'Rehearse the mission',
-    text: 'Simulate full campaigns, test contingencies and train crews in the digital twin.',
+    text: 'Avoids slopes exceeding 15% and unstable dust traps using Thermal Inertia and Dust Cover Index filters before astronauts depart from Sinus Meridiani.',
   },
   {
     icon: 'layers',
     title: 'Built on open data',
-    text: 'Uses public NASA datasets, making it transparent, reproducible and easy to extend.',
+    text: 'Powered by official NASA Mars Trek datasets, integrating MOLA topography, CRISM mineralogy, and thermal data for transparent and scientifically reproducible mission planning.',
   },
 ];
 
 export const impact = {
   intro:
-    'Our goal is to turn months of manual traverse planning into minutes, helping humanity take its first confident steps on Mars and bringing the same technology back to Earth.',
+    'Our goal is to compute safe, optimized traverses in minutes, guiding astronauts from their habitat in Sinus Meridiani directly to high-probability biosignature targets while eliminating environmental and terrain hazards.',
   stats: [
     { value: 38, suffix: '%', label: 'shorter average traverses' },
     { value: 3, suffix: '×', label: 'more sampling sites per mission' },
-    { value: 72, suffix: '%', label: 'fewer high-risk segments' },
-    { value: 24, suffix: '/7', label: 'autonomous re-planning' },
-  ],
-  audiences: [
-    {
-      icon: 'rocket',
-      title: 'For astronauts',
-      text: 'Clear, safe paths and fewer surprises during long surface excursions.',
-    },
-    {
-      icon: 'users',
-      title: 'For mission control',
-      text: 'A shared view of plans, bases and resources to make faster decisions.',
-    },
-    {
-      icon: 'globe',
-      title: 'For Earth',
-      text: 'The same engine can guide rescue teams and expeditions in extreme environments.',
-    },
   ],
 };
 
@@ -155,7 +105,7 @@ export const tools = [
   },
   {
     group: 'AI & algorithms',
-    items: ['Python', 'PyTorch', 'A* / D* Lite pathfinding', 'GDAL & Rasterio'],
+    items: ['Python', 'Flutter', 'A* / Dart'],
   },
   {
     group: 'Visualization',
@@ -180,8 +130,8 @@ export const creativity = [
   },
   {
     icon: 'sparkles',
-    title: 'A living digital twin',
-    text: 'The map learns from every excursion, updating hazards and resource predictions in real time.',
+    title: 'Map Thinker',
+    text: 'The map learns from every excursion, updating hazards and resource predictions for next trips.',
   },
   {
     icon: 'droplet',
@@ -191,9 +141,9 @@ export const creativity = [
 ];
 
 export const teamMembers = [
-  { name: 'Ana Torres', role: 'Mission design' },
-  { name: 'Luis Méndez', role: 'AI & data' },
-  { name: 'Sofía Rivera', role: 'Frontend & 3D' },
-  { name: 'Diego Castillo', role: 'Geospatial' },
-  { name: 'María López', role: 'UX & storytelling' },
+  { name: 'Crysthel Aparicio', role: 'SI & Data' },
+  { name: 'Dennis Carrillo', role: 'Developer' },
+  { name: 'JeanPierre Cruz', role: 'UX & storytelling' },
+  { name: 'Carlos Lizano', role: 'Application Architect' },
+  { name: 'Jhordan Lazma', role: 'Geospatial' },
 ];

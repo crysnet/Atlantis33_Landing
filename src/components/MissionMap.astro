@@ -75,11 +75,14 @@ const initial = routes[0];
         }
       </g>
 
-      <!-- Landing site -->
+      <!-- Habitat -->
       <g transform="translate(90 400)">
-        <circle r="16" fill="#f1ebe6" fill-opacity="0.12" stroke="#f1ebe6" stroke-opacity="0.5"></circle>
-        <path d="M0 -8 L7 6 L-7 6Z" fill="#f1ebe6"></path>
-        <text x="0" y="36" text-anchor="middle" class="label">LANDING SITE</text>
+        <circle r="18" fill="#f1ebe6" fill-opacity="0.12" stroke="#f1ebe6" stroke-opacity="0.5"></circle>
+        <path d="M-9 6 V0 A9 9 0 0 1 9 0 V6 Z" fill="#f1ebe6"></path>
+        <rect x="-2.5" y="1" width="5" height="5" rx="1" fill="#3e170e"></rect>
+        <path d="M-12 6 H12" stroke="#f1ebe6" stroke-width="1.5" stroke-linecap="round"></path>
+        <text x="0" y="38" text-anchor="middle" class="label">HABITAT</text>
+        <title>Habitat: mission starting point</title>
       </g>
 
       <!-- Bases -->
@@ -106,10 +109,10 @@ const initial = routes[0];
 
   <aside class="panel">
     <span class="eyebrow">Live demo</span>
-    <h3>Choose a mission strategy</h3>
-    <p class="hint">Switch the objective and watch ARES Pathfinder re-plan the traverse from the landing site to Base Alpha.</p>
+    <h3>Choose a target waypoint</h3>
+    <p class="hint">Select destination waypoints enriched in aqueous alteration minerals and paleohydrological features to maximize biosignature preservation potential.</p>
 
-    <div class="tabs" role="tablist" aria-label="Route strategy">
+    <div class="tabs" role="tablist" aria-label="Destination base">
       {
         routes.map((r) => (
           <button
@@ -119,8 +122,6 @@ const initial = routes[0];
             data-route={r.id}
             data-distance={r.distance}
             data-duration={r.duration}
-            data-risk={r.risk}
-            data-sites={r.sites}
           >
             {r.label}
           </button>
@@ -131,20 +132,7 @@ const initial = routes[0];
     <dl class="metrics">
       <div><dt>Distance</dt><dd data-metric="distance">{initial.distance}</dd></div>
       <div><dt>EVA time</dt><dd data-metric="duration">{initial.duration}</dd></div>
-      <div><dt>Risk level</dt><dd data-metric="risk">{initial.risk}</dd></div>
-      <div><dt>Science</dt><dd data-metric="sites">{initial.sites}</dd></div>
     </dl>
-
-    <ul class="legend">
-      {
-        bases.map((b) => (
-          <li>
-            <span style={`background:${b.color}`} />
-            {b.name} — {b.find}
-          </li>
-        ))
-      }
-    </ul>
   </aside>
 </div>
 
@@ -344,29 +332,6 @@ const initial = routes[0];
     font-weight: 600;
   }
 
-  .legend {
-    list-style: none;
-    padding: 0;
-    margin: auto 0 0;
-    display: grid;
-    gap: 0.45rem;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
-
-  .legend li {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
-  .legend span {
-    width: 10px;
-    height: 10px;
-    transform: rotate(45deg);
-    border-radius: 2px;
-  }
-
   @media (max-width: 1000px) {
     .mission {
       grid-template-columns: 1fr;
@@ -388,7 +353,7 @@ const initial = routes[0];
       const id = btn.dataset.route;
       buttons.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
       routes.forEach((r) => r.classList.toggle('active', r.dataset.route === id));
-      for (const key of ['distance', 'duration', 'risk', 'sites']) {
+      for (const key of ['distance', 'duration']) {
         const el = root.querySelector<HTMLElement>(`[data-metric="${key}"]`);
         if (el) el.textContent = btn.dataset[key] ?? '';
       }

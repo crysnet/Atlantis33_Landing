@@ -1,6 +1,5 @@
 ---
 import { impact } from '../data/content';
-import Icon from './Icon.astro';
 ---
 
 <section class="section impact" id="impact">
@@ -27,22 +26,6 @@ import Icon from './Icon.astro';
         ))
       }
     </dl>
-
-    <div class="audiences">
-      {
-        impact.audiences.map((a, i) => (
-          <article class="card reveal" style={`--delay: ${i * 100}ms`}>
-            <div class="icon-badge">
-              <Icon name={a.icon} />
-            </div>
-            <div>
-              <h3>{a.title}</h3>
-              <p>{a.text}</p>
-            </div>
-          </article>
-        ))
-      }
-    </div>
   </div>
 </section>
 
@@ -75,7 +58,7 @@ import Icon from './Icon.astro';
 
   .stats {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     margin: 4rem 0 0;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
@@ -109,46 +92,9 @@ import Icon from './Icon.astro';
     color: var(--muted);
   }
 
-  .audiences {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    margin-top: 3rem;
-  }
-
-  .audiences article {
-    display: flex;
-    gap: 1.1rem;
-    align-items: flex-start;
-  }
-
-  .audiences .icon-badge {
-    flex-shrink: 0;
-  }
-
-  h3 {
-    font-size: 1.1rem;
-  }
-
-  .audiences p {
-    margin-top: 0.4rem;
-    color: var(--muted);
-    font-size: 0.95rem;
-  }
-
   @media (max-width: 900px) {
-    .intro,
-    .audiences {
+    .intro {
       grid-template-columns: 1fr;
-    }
-    .stats {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    .stats div:nth-child(3) {
-      border-left: 0;
-    }
-    .stats div:nth-child(n + 3) {
-      border-top: 1px solid var(--border);
     }
   }
 </style>

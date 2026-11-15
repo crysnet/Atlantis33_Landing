@@ -6,7 +6,7 @@ import Icon from './Icon.astro';
 <section class="section" id="benefits">
   <div class="container">
     <span class="eyebrow reveal">02 — Benefits</span>
-    <h2 class="section-title reveal">Why crews and mission control <span class="gradient-text">need it.</span></h2>
+    <h2 class="section-title reveal">Why <span class="gradient-text">Atlantis Pathfinder?</span></h2>
 
     <div class="grid">
       {
@@ -27,29 +27,24 @@ import Icon from './Icon.astro';
 <style>
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
     margin-top: 3.5rem;
   }
 
   h3 {
     margin-top: 1.4rem;
-    font-size: 1.2rem;
+    font-size: 1.35rem;
   }
 
   p {
     margin-top: 0.6rem;
     color: var(--muted);
-    font-size: 0.95rem;
+    font-size: 1rem;
+    max-width: 52ch;
   }
 
-  @media (max-width: 900px) {
-    .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .grid {
       grid-template-columns: 1fr;
     }
